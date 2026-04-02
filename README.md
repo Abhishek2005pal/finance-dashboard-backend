@@ -47,7 +47,7 @@ The following variables must be set in your `.env` file:
 
 | Variable         | Description                                             | Example                                                              |
 | ---------------- | ------------------------------------------------------- | -------------------------------------------------------------------- |
-| `DATABASE_URL`   | The connection string for your MongoDB database.        | `mongodb+srv://user:password@cluster.mongodb.net/finance_db?retryWrites=true&w=majority` |
+| `DATABASE_URL`   | The connection string for your MongoDB database.        | `mongodb+srv://<user>:<password>@<cluster-url>/<database-name>` |
 | `JWT_SECRET`     | A secret key for signing JWT tokens.                    | `your_super_secret_and_long_jwt_key`                                 |
 | `JWT_EXPIRES_IN` | The expiration time for JWT tokens.                     | `7d`                                                                 |
 | `PORT`           | The port on which the server will run.                  | `3000`                                                               |
