@@ -1,0 +1,54 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  VIEWER
+  ANALYST
+  ADMIN
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum RecordType {
+  INCOME
+  EXPENSE
+}
+
+model User {
+  id            String            @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  email         String            @unique
+  password      String
+  role          Role              @default(VIEWER)
+  status        UserStatus        @default(ACTIVE)
+  createdAt     DateTime          @default(now()) @map("created_at")
+  updatedAt     DateTime          @updatedAt @map("updated_at")
+  records       FinancialRecord[]
+
+  @@map("users")
+}
+
+model FinancialRecord {
+  id          String        @id @default(auto()) @map("_id") @db.ObjectId
+  amount      Float
+  type        RecordType
+  category    String
+  date        DateTime      @db.Date
+  notes       String?
+  createdBy   User          @relation(fields: [createdById], references: [id])
+  createdById String        @db.ObjectId @map("created_by")
+  isDeleted   Boolean       @default(false) @map("is_deleted")
+  createdAt   DateTime      @default(now()) @map("created_at")
+  updatedAt   DateTime      @updatedAt @map("updated_at")
+
+  @@map("financial_records")
+}
