@@ -9,7 +9,7 @@
 /prisma/dev.db-journal
 
 # Build output
-/dist
+# /dist
 
 # Logs
 *.log

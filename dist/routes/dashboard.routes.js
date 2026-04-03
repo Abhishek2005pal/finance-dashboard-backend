@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const client_1 = require("@prisma/client");
+const express_1 = require("express");
+const authMiddleware_1 = require("../middlewares/authMiddleware");
+const roleGuard_1 = require("../middlewares/roleGuard");
+const dashboard_controller_1 = require("../modules/dashboard/dashboard.controller");
+const router = (0, express_1.Router)();
+router.use(authMiddleware_1.requireAuth, (0, roleGuard_1.requireRole)(client_1.Role.ADMIN, client_1.Role.ANALYST));
+router.get('/summary', dashboard_controller_1.getSummary);
+router.get('/by-category', dashboard_controller_1.getSummaryByCategory);
+router.get('/trends', dashboard_controller_1.getTrends);
+router.get('/recent', dashboard_controller_1.getRecentActivity);
+exports.default = router;
