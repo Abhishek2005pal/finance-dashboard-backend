@@ -55,36 +55,40 @@ The following variables must be set in your `.env` file:
 
 ## API Endpoints
 
+When testing the protected routes, remember to include the JWT token in the Authorization header of your requests, like this:
+
+`Authorization: Bearer <your-jwt-token>`
+
 ### Auth
-| Method | Endpoint             | Role Required | Description               |
-| ------ | -------------------- | ------------- | ------------------------- |
-| `POST` | `/api/auth/register` | Public        | Register a new user.      |
-| `POST` | `/api/auth/login`    | Public        | Log in and receive a JWT. |
+| Method | Endpoint                                                                 | Role Required | Description               |
+| ------ | ------------------------------------------------------------------------ | ------------- | ------------------------- |
+| `POST` | `https://finance-dashboard-backend-p8qa.onrender.com/api/auth/register`  | Public        | Register a new user.      |
+| `POST` | `https://finance-dashboard-backend-p8qa.onrender.com/api/auth/login`     | Public        | Log in and receive a JWT. |
 
 ### Users
-| Method   | Endpoint          | Role Required | Description                               |
-| -------- | ----------------- | ------------- | ----------------------------------------- |
-| `GET`    | `/api/users`      | ADMIN         | Get a paginated list of all users.        |
-| `GET`    | `/api/users/:id`  | ADMIN         | Get a single user by their ID.            |
-| `PATCH`  | `/api/users/:id`  | ADMIN         | Update a user's details, role, or status. |
-| `DELETE` | `/api/users/:id`  | ADMIN         | Soft delete (deactivate) a user.          |
+| Method   | Endpoint                                                              | Role Required | Description                               |
+| -------- | --------------------------------------------------------------------- | ------------- | ----------------------------------------- |
+| `GET`    | `https://finance-dashboard-backend-p8qa.onrender.com/api/users`       | ADMIN         | Get a paginated list of all users.        |
+| `GET`    | `https://finance-dashboard-backend-p8qa.onrender.com/api/users/:id`   | ADMIN         | Get a single user by their ID.            |
+| `PATCH`  | `https://finance-dashboard-backend-p8qa.onrender.com/api/users/:id`   | ADMIN         | Update a user's details, role, or status. |
+| `DELETE` | `https://finance-dashboard-backend-p8qa.onrender.com/api/users/:id`   | ADMIN         | Soft delete (deactivate) a user.          |
 
 ### Financial Records
-| Method   | Endpoint            | Role Required   | Description                                      |
-| -------- | ------------------- | --------------- | ------------------------------------------------ |
-| `POST`   | `/api/records`      | ADMIN           | Create a new financial record.                   |
-| `GET`    | `/api/records`      | ADMIN, ANALYST  | Get a paginated and filterable list of records.  |
-| `GET`    | `/api/records/:id`  | ADMIN, ANALYST  | Get a single financial record by its ID.         |
-| `PATCH`  | `/api/records/:id`  | ADMIN           | Update a financial record.                       |
-| `DELETE` | `/api/records/:id`  | ADMIN           | Soft delete a financial record.                  |
+| Method   | Endpoint                                                                | Role Required   | Description                                      |
+| -------- | ----------------------------------------------------------------------- | --------------- | ------------------------------------------------ |
+| `POST`   | `https://finance-dashboard-backend-p8qa.onrender.com/api/records`       | ADMIN           | Create a new financial record.                   |
+| `GET`    | `https://finance-dashboard-backend-p8qa.onrender.com/api/records`       | ADMIN, ANALYST  | Get a paginated and filterable list of records.  |
+| `GET`    | `https://finance-dashboard-backend-p8qa.onrender.com/api/records/:id`   | ADMIN, ANALYST  | Get a single financial record by its ID.         |
+| `PATCH`  | `https://finance-dashboard-backend-p8qa.onrender.com/api/records/:id`   | ADMIN           | Update a financial record.                       |
+| `DELETE` | `https://finance-dashboard-backend-p8qa.onrender.com/api/records/:id`   | ADMIN           | Soft delete a financial record.                  |
 
 ### Dashboard
-| Method | Endpoint                    | Role Required  | Description                                      |
-| ------ | --------------------------- | -------------- | ------------------------------------------------ |
-| `GET`  | `/api/dashboard/summary`    | ADMIN, ANALYST | Get a summary of totals (income, expense, etc.). |
-| `GET`  | `/api/dashboard/by-category`| ADMIN, ANALYST | Get totals grouped by category and type.         |
-| `GET`  | `/api/dashboard/trends`     | ADMIN, ANALYST | Get income/expense trends by week or month.      |
-| `GET`  | `/api/dashboard/recent`     | ADMIN, ANALYST | Get the 10 most recent financial records.        |
+| Method | Endpoint                                                                      | Role Required  | Description                                      |
+| ------ | ----------------------------------------------------------------------------- | -------------- | ------------------------------------------------ |
+| `GET`  | `https://finance-dashboard-backend-p8qa.onrender.com/api/dashboard/summary`     | ADMIN, ANALYST | Get a summary of totals (income, expense, etc.). |
+| `GET`  | `https://finance-dashboard-backend-p8qa.onrender.com/api/dashboard/by-category` | ADMIN, ANALYST | Get totals grouped by category and type.         |
+| `GET`  | `https://finance-dashboard-backend-p8qa.onrender.com/api/dashboard/trends`      | ADMIN, ANALYST | Get income/expense trends by week or month.      |
+| `GET`  | `https://finance-dashboard-backend-p8qa.onrender.com/api/dashboard/recent`      | ADMIN, ANALYST | Get the 10 most recent financial records.        |
 
 ## Role Permissions
 | Role    | Register/Login | View Records | Create/Edit/Delete Records | View Dashboard | Manage Users |
